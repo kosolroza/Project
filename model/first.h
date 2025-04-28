@@ -16,4 +16,3 @@ struct List{
     Information *tail;
 };
 
-void 
