@@ -1,8 +1,4 @@
-#include <iostream>
-
-using namespace std;
-
+#include"head.h"
 int main(){
-    cout <<"New Project"<<endl;
-    return 0;
+    
 }
