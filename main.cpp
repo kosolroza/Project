@@ -1,4 +1,7 @@
+#include<iostream>
+#include<string>
 #include"Employee.h"
 int main(){
-   displayEmployees(); 
+   string searchid = "EMP015" ;
+    searchEmployee(searchid);
 }
