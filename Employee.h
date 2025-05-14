@@ -79,7 +79,7 @@ void searchEmployee(string searchId){
         cout << "Error: couldn't open file" << endl;
         return;
     }
-
+    bool found = false;
     string line;
     string id ,first, last, sex, pos, per, dep, sal, hir, bonus;
     int location =0;
@@ -142,8 +142,12 @@ void searchEmployee(string searchId){
              << setw(15) << dep
              << setw(12) << hir
              << endl;
+             found = true;
              break;
          }
     }
+    if (!found) {
+    cout << "Employee with ID " << searchId << " not found." << endl;
+}
     file.close();
 }
