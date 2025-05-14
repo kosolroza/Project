@@ -125,8 +125,15 @@ void searchEmployee(string searchId){
         bonus = line.substr(0, location);
         line = line.substr(location + 1, line.length());
         //Now we will display the search employee
-        while (id == searchId)
-        {
+        if (id == searchId)
+        {   cout << left << setw(10) << "ID"
+             << setw(15) << "First Name"
+             << setw(15) << "Last Name"
+             << setw(10) << "Sex"
+             << setw(25) << "Position"
+             << setw(15) << "Departement"
+             << setw(12) << "Hire Date"
+             << endl;
             cout << left << setw(10) << id
              << setw(15) << first
              << setw(15) << last
@@ -136,9 +143,7 @@ void searchEmployee(string searchId){
              << setw(12) << hir
              << endl;
              break;
-        }
+         }
     }
-    
-
     file.close();
 }

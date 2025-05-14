@@ -2,6 +2,6 @@
 #include<string>
 #include"Employee.h"
 int main(){
-   string searchid = "EMP015" ;
+   string searchid = "EMP101" ;
     searchEmployee(searchid);
 }
