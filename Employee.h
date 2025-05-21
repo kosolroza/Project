@@ -7,7 +7,7 @@
 using namespace std;
 
 struct Employee{
-    string ID, First, Last, Sex, Pos, Per, Dep, Sal, Hir, Bonus;
+    string ID, First, Last, Sex, Pos, Per, Dep, Sal, Hir, Bonus, Password;
     Employee *next;
 };
 
@@ -22,11 +22,11 @@ struct List{
      }
 };
 
-void addTheEnd(List *ls, string id, string first, string last, string sex, string pos, string per, string dep, string sal, string hir, string bonus){
+void addTheEnd(List *ls, string id, string first, string last, string sex, string pos, string per, string dep, string sal, string hir, string bonus, string password){
     Employee *e = new Employee;
     e -> ID = id;
     e -> First = first;
-    e ->  Last = last;;
+    e -> Last = last;;
     e -> Sex = sex;
     e -> Pos = pos;
     e -> Per = per;
@@ -34,6 +34,7 @@ void addTheEnd(List *ls, string id, string first, string last, string sex, strin
     e -> Sal = sal;
     e -> Hir = hir;
     e -> Bonus = bonus;
+    e -> Password = password;
     e -> next = nullptr;
     if(ls -> n == 0 ){
         ls -> head = e;
@@ -102,7 +103,7 @@ void readFile(List* ls){
 
     while(getline(fin, line)){
         stringstream ss(line);
-        string id, first, last, sex, pos, per, dep, sal, hir, bonus;
+        string id, first, last, sex, pos, per, dep, sal, hir, bonus, password;
 
         getline(ss, id, ',');
         getline(ss, first, ',');
@@ -114,9 +115,44 @@ void readFile(List* ls){
         getline(ss, sal, ',');
         getline(ss, hir, ',');
         getline(ss, bonus, ',');
+        getline(ss, password, ',');
 
-        addTheEnd(ls, id, first, last, sex, pos, per, dep, sal, hir, bonus);
+        addTheEnd(ls, id, first, last, sex, pos, per, dep, sal, hir, bonus, password);
     }
 
     fin.close();
+}
+
+void viewPersonalDetail(List *l,string id){
+     Employee *t = l -> head;
+    while (t!= nullptr){
+        if(id == t->ID){
+            cout << left << setw(10) << "ID"
+             << setw(15) << "First Name"
+             << setw(15) << "Last Name"
+             << setw(10) << "Sex"
+             << setw(25) << "Position"
+             << setw(15) << "Perfromance"
+             << setw(15) << "Departement"
+             << setw(15) << "Salary"
+             << setw(12) << "Hire Date"
+             << setw(15) << "Bonus"
+             << setw(15) << "Password"
+             << endl
+             << left << setw(10) << id
+             << setw(15) << t -> First
+             << setw(15) << t -> Last
+             << setw(10) << t -> Sex
+             << setw(25) << t -> Pos
+             << setw(15) << t -> Per
+             << setw(15) << t -> Dep
+             << setw(15) << t -> Sal
+             << setw(12) << t -> Hir
+             << setw(15) << t -> Bonus
+             << setw(15) << t -> Password
+             << endl;
+             return;
+        }
+        t = t -> next;
+    }
 }
