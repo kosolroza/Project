@@ -1,8 +1,8 @@
 #include <iostream>
-
 using namespace std;
+#include "view/design.h"
 
-int main(){
-    cout <<"New Project"<<endl;
+int main() {
+    firstboard();
     return 0;
 }
