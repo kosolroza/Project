@@ -31,13 +31,13 @@ void loginManager(){
 void loginEmployee(){
     login *l = new login;
     readloginFromfile(l);
-    string username, password;
-    cout << "Enter username: ";
-    cin >> username;
+    string id, password;
+    cout << "Enter ID: ";
+    cin >> id;
     cout << "Enter password: ";
     cin >> password;
 
-    if (username == l->username && password == l->password) {
+    if (id == l->id && password == l->password) {
         cout << "Login successful!" << endl;
         employeeboard();
     } else {
@@ -84,27 +84,39 @@ void managerboard(){
         int choice;
         cout << "Enter your choice: ";
         cin >> choice;
-    
+        
+        string id;
+        char gender;
+        string fName, lName, posi, department, perform;
+        double salary, bonus;
         switch (choice) {
             case 1:{
                 // Add employee logic
-                int id;
-                string name, department;
-                double salary;
                 cout << "Enter Employee ID: ";
                 cin >> id;
-                cout << "Enter Employee Name: ";
-                cin >> name;
+                cout << "Enter Employee First Name: ";
+                cin >> fName;
+                cout << "Enter Employee Last Name: ";
+                cin >> lName;
+                cout << "Enter Employee gender (M/F): ";
+                cin>>gender;
+                cout << "Enter Employee Position: ";
+                cin >> posi;
+                cout << "Enter Employee Performance: ";
+                cin >> perform;
                 cout << "Enter Employee Department: ";
                 cin >> department;
                 cout << "Enter Employee Salary: ";
                 cin >> salary;
-                addEmployee(list, id, name, department, salary);
+                cout << "Enter Employee Bonus: ";
+                cin >> bonus;
+
+                addEmployee(list, id, fName, lName, gender, posi, department, salary, bonus, perform);
+                cout << "Employee added successfully!" << endl;
                 break;
             }
             case 2:{
                 // Delete employee logic
-                int id;
                 cout << "Enter Employee ID to delete: ";
                 cin >> id;
                 deleteEmployee(list, id);
@@ -113,24 +125,31 @@ void managerboard(){
             }
             case 3:{
                 // Update employee logic
-                int id;
-                string name, department;
-                double salary;
                 cout << "Enter Employee ID to update: ";
                 cin >> id;
-                cout << "Enter new Employee Name: ";
-                cin >> name;
+                cout << "Enter new Employee First Name: ";
+                cin >> fName;
+                cout << "Enter new Employee Last Name: ";
+                cin>>lName;
+                cout << "Enter new Employee gender (M/F): ";
+                cin>>gender;
+                cout << "Enter new Employee Position: ";
+                cin >> posi;
+                cout << "Enter new Employee Performance: ";
+                cin >> perform;
                 cout << "Enter new Employee Department: ";
                 cin >> department;
                 cout << "Enter new Employee Salary: ";
                 cin >> salary;
-                updateEmployeeDetails(list, id, name, department, salary);
+                cout << "Enter new Employee Bonus: ";
+                cin >> bonus;
+                updateEmployeeDetails(list, id, fName, lName, gender, posi, department, salary, bonus, perform);
                 cout << "Employee updated successfully!" << endl;
             }
             case 4:{
                 // View employees logic
                 cout << "Employee List:" << endl;
-                viewEmployeeDetails(list);
+                displayEmployee(list);
                 break;
             }
             case 5:
@@ -146,41 +165,53 @@ void managerboard(){
 void employeeboard(){
     while(1){
         cout << "Welcome to the Employee Board" << endl;
-        cout << "1. View Profile" << endl;
-        cout << "2. Update Profile" << endl;
-        cout << "3. Logout" << endl;
+        cout << "1. Search Employee" << endl;
+        cout<<"2. View your Profile"<<endl;
+        cout << "3. Update Profile" << endl;
+        cout << "4. Logout" << endl;
         int choice;
         cout << "Enter your choice: ";
         cin >> choice;
-    
+       
+        string id;
+        char gender;
+        string fName, lName, posi, department, perform;
+        double salary, bonus;
+
         switch (choice) {
             case 1:{
                 // View profile logic
-                int id;
+
                 cout << "Enter Employee ID to view: ";
                 cin >> id;
-                searchEmployeeById(list, id);
+                searchByID(list, id);
                 cout << "Employee details displayed successfully!" << endl;
                 break;
             }
             case 2:{
-                // Update profile logic
-                int id;
-                string name, department;
-                double salary;
-                cout << "Enter Employee ID to update: ";
+                // View profile logic
+                cout << "Enter Employee ID to view: ";
                 cin >> id;
-                cout << "Enter new Employee Name: ";
-                cin >> name;
-                cout << "Enter new Employee Department: ";
-                cin >> department;
-                cout << "Enter new Employee Salary: ";
-                cin >> salary;
-                updateEmployeeDetails(list, id, name, department, salary);
-                cout << "Employee updated successfully!" << endl;
+                viewPersonalDetail(list, id);
+                cout << "Employee details displayed successfully!" << endl;
                 break;
             }
-            case 3:
+            case 3:{
+                // Update profile logic
+
+                // cout << "Enter Employee ID to update: ";
+                // cin >> id;
+                // cout << "Enter new Employee Name: ";
+                // cin >> name;
+                // cout << "Enter new Employee Department: ";
+                // cin >> department;
+                // cout << "Enter new Employee Salary: ";
+                // cin >> salary;
+                // updateEmployeeDetails(list, id, name, department, salary);
+                // cout << "Employee updated successfully!" << endl;
+                // break;
+            }
+            case 4:
                 firstboard();
                 break;
             default:

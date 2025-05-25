@@ -3,10 +3,16 @@
 using namespace std;
 
 struct Employee{
-    int id;
-    string name;
+    string id;
+    string firstName;
+    string lastName;
+    char gender;
+    string position;
     string department;
     double salary;
+    double bonus;
+    string newPassword;
+    string performance;
     Employee *next;
 };
 
@@ -25,7 +31,7 @@ EmployeeList *initEmployeeList() {
 }
     
 struct login{
-    string username;
+    string id;
     string password;
 };
 
